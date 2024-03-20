@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, memo } from 'react'
 import { Todo } from '../types/todos'
 import DoneIcon from './ui/DoneIcon'
 import Checkbox from './ui/Checkbox'
@@ -42,7 +42,7 @@ const CompleteButton: FC<Props> = observer(({todo}) => {
   )
 })
 
-const ItemTodos: FC<Props> = ({todo}) => {
+const ItemTodos: FC<Props> = memo(({todo}) => {
   return (
     <li style={{textDecoration: todo.completed ? 'line-through' : 'none'}}>
       <div style={{display: 'flex', gap: '15px'}}>
@@ -52,6 +52,6 @@ const ItemTodos: FC<Props> = ({todo}) => {
       <CompleteButton todo={todo} />
     </li>
   )
-}
+})
 
 export default ItemTodos
